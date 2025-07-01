@@ -80,6 +80,8 @@ if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
 
+
+var token = 'SECRET_TOKEN_14143sadfsfd'
 var token = 'SECRET_TOKEN_14143';
 console.log('token: ' + token);
 
