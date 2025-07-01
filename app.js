@@ -43,7 +43,7 @@ app.use(session({
   secret: 'keyboard cat',
   name: 'connect.sid',
   cookie: { path: '/' }
-}))
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(fileUpload());
@@ -55,7 +55,7 @@ app.get('/login', routes.login);
 app.post('/login', routes.loginHandler);
 app.get('/admin', routes.isLoggedIn, routes.admin);
 app.get('/account_details', routes.isLoggedIn, routes.get_account_details);
-app.post('/account_details', routes.isLoggedIn, routes.save_account_details);
+app.post('/account_details', routes.isLoggedIn, routes.save_account_details); // Vulnerable route
 app.get('/logout', routes.logout);
 app.post('/create', routes.create);
 app.get('/destroy/:id', routes.destroy);
@@ -80,8 +80,6 @@ if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
 
-
-var token = 'SECRET_TOKEN_14143sadfsfd'
 var token = 'SECRET_TOKEN_14143';
 console.log('token: ' + token);
 
