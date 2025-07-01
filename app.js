@@ -80,7 +80,7 @@ if (app.get('env') == 'development') {
   app.use(errorHandler());
 }
 
-var token = 'SECRET_TOKEN_123';
+var token = 'SECRET_TOKEN_1414';
 console.log('token: ' + token);
 
 http.createServer(app).listen(app.get('port'), function () {
