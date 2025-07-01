@@ -23,6 +23,15 @@ const users = [
 ];
 
 // Vulnerable route: XSS via unsanitized input rendering
+const RateLimit = require('express-rate-limit');
+const limiter = new RateLimit({
+  windowMs: parseInt(process.env.WINDOW_MS, 10),
+  max: parseInt(process.env.MAX_IP_REQUESTS, 10),
+  delayMs: parseInt(process.env.DELAY_MS, 10),
+  headers: true
+});
+
+router.use(limiter);
 router.get('/profile/:username', (req, res) => {
   const username = req.params.username;
   // Simulate fetching user data
